@@ -1,6 +1,7 @@
 import 'package:cafe_app/components/colors.dart';
 import 'package:cafe_app/screens/cart/cartscreen.dart';
 import 'package:flutter/material.dart';
+import '../../components/curved_navigationBar.dart';
 import '../../components/dimensions.dart';
 import '../../models/user_model.dart';
 import '../../services/api_response.dart';
@@ -13,6 +14,7 @@ import '../profile/profile.dart';
 import 'dart:math';
 import 'package:cafe_app/services/user_service.dart';
 import 'package:get/get.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
  class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -53,7 +55,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
 
   void login()
   {
-     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>Login()), (route) => false);
+    //  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>Login()), (route) => false);
+     Get.to(() => Login(), transition: Transition.rightToLeftWithFade);
   }
 
   void logout()
@@ -74,17 +77,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
                   child: _drawerView(_screenSize, context),
               ),
       body: buildHome(context),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: mainColor,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home),
-                                    label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite),
-                                    label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.account_box),
-                                    label: '')
-        ],
-      ),
+      bottomNavigationBar: CurvedNavigation()
+      // bottomNavigationBar: BottomNavigationBar(
+      //   backgroundColor: mainColor,
+      //   items: [
+      //     BottomNavigationBarItem(icon: Icon(Icons.home),
+      //                               label: ''),
+      //     BottomNavigationBarItem(icon: Icon(Icons.favorite),
+      //                               label: ''),
+      //     BottomNavigationBarItem(icon: Icon(Icons.account_box),
+      //                               label: '')
+      //   ],
+      // ),
     );
     // buildHome(context);
   }
@@ -92,7 +96,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
   AppBar _appBar(BuildContext context) {
     return AppBar(
       elevation: 0,
-      toolbarHeight: 100,
+      toolbarHeight: 80,
       backgroundColor: mainColor,
       leadingWidth: 100,
       leading:Builder(
@@ -190,7 +194,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
                                  Get.to(() => Home(), transition: Transition.rightToLeftWithFade);
                               },
                               leading: Icon(Icons.home, color: textColor,),
-                              title: Text("Home", style: TextStyle(color: textColor),),
+                              title: Text("Home", style: TextStyle(color: textColor, fontSize: Dimensions.font20),),
                             ),
                             ListTile(
                               onTap: (){
@@ -205,7 +209,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
                               title: Text(
                                 "My Orders", 
                                 style: TextStyle(
-                                  color: textColor),),
+                                  color: textColor,fontSize: Dimensions.font20),),
                             ),
                             ListTile(
                               onTap: (){
@@ -219,7 +223,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
                               title: Text(
                                 "Profile", 
                                 style: TextStyle(
-                                  color: textColor),),
+                                  color: textColor,fontSize: Dimensions.font20),),
                             ),
                             // ListTile(
                             //   onTap: (){
@@ -241,7 +245,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
                                     color: textColor,),
                              
                               title: Text(isLoggedIn ? 'Logout' : 'Login/ Sign Up',  style: TextStyle(
-                                             color: textColor),),
+                                             color: textColor, fontSize: Dimensions.font20),),
                               onTap: () {
                                 if (isLoggedIn) {
                                   logout();
@@ -303,6 +307,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
           padding: EdgeInsets.only(top: Dimensions.width20,),
           children: [
             Container(
+              padding: EdgeInsets.only(bottom: 150),
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: Column(

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cafe_app/components/colors.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:cafe_app/components/size_config.dart';
 import 'package:cafe_app/widgets/top_custom_shape.dart';
@@ -13,6 +14,7 @@ import '../../services/orders_service.dart';
 import '../../services/profile_service.dart';
 import '../../widgets/custom_widgets.dart';
 import 'package:path/path.dart' as path;
+
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -108,7 +110,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: mainColor,
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,

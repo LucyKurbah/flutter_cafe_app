@@ -20,7 +20,7 @@ class BadgeWidget extends StatelessWidget {
                    },
                 ),
                 child:  IconButton(
-                            icon: Icon(Icons.shopping_bag_outlined, size: 30,), 
+                            icon: Icon(Icons.shopping_cart_outlined, size: 30,), 
                             color: Colors.white,
                             onPressed: () { 
                               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) => CartScreen()));

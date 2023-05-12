@@ -81,16 +81,15 @@ class _HomeCardState extends State<HomeCard> {
       
       child: Padding(
         
-        padding: EdgeInsets.all(Dimensions.width5),
+        padding: EdgeInsets.all(Dimensions.width45),
         child: GridView.builder(
-          
           shrinkWrap: true,
           // physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, 
               crossAxisSpacing: Dimensions.crossAxisSpacing10,
               mainAxisSpacing: Dimensions.mainAxisSpacing10,
-              mainAxisExtent: Dimensions.mainAxisExtentSize-10,
+              mainAxisExtent: Dimensions.mainAxisExtentSize,
               ),
           itemCount: gridMap.length, 
           itemBuilder: ((context, index) {
@@ -113,7 +112,7 @@ class _HomeCardState extends State<HomeCard> {
                             scale: 0.34,
                             child: Image.asset(
                               "${gridMap.elementAt(index)['images']}",
-                              height: MediaQuery.of(context).size.height*0.2,
+                              height: MediaQuery.of(context).size.height*0.13,
                               width: double.infinity,
                               fit: BoxFit.cover,
                             ),

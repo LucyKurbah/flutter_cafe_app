@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 var mainColor =  Colors.black;
 var greyColor = Colors.grey;
+var dgreyColor = Colors.grey[900];
 var buttonColor = Color(0xFFFFFF);
 var textColor =  Colors.white;
 var iconColors1 = Color(0xffE57734);
